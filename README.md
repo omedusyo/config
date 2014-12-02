@@ -11,5 +11,5 @@ To initialize vundle you need to run the following command
 
 Initialize oh my zsh with the following command
 > `wget --no-check-certificate http://install.ohmyz.sh -O - | sh`
-This will create `~/.oh-my-zsh` folder.
 
+This will create `~/.oh-my-zsh` folder.
