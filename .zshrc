@@ -31,6 +31,7 @@ bindkey -M vicmd '^s' history-incremental-search-backward
 alias l="ls"
 alias ll="ls -la"
 alias sudo="sudo "
+alias py="ptpython --vi"
 
 # Tmuxinator configurations
 export EDITOR=vim
