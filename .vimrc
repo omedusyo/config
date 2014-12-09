@@ -28,7 +28,6 @@ Plugin 'adimit/prolog.vim'                " Prolog syntax.
 
 Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
 Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
-Plugin 'Lokaltog/powerline'               " Improved status/tabline.
 Plugin 'sjl/gundo.vim'                    " Visualizes the undo tree.
 Plugin 'mikewest/vimroom'                 " Makes for better writing experience (<LEADER>V).
 
@@ -41,6 +40,7 @@ call vundle#end()
 
 syntax enable      " Enables syntax highlighting.
 filetype plugin indent on
+
 " Colorscheme configurations
 " set background=light
 " let g:solarized_termcolors=256
@@ -51,9 +51,9 @@ set number         " Shows line numbers.
 set cursorline     " Highlights current line.
 set showmatch      " Shows bracket matches.
 set encoding=utf-8
-set vb             " Enables visual bell (disables audio bell).
+" set vb             " Enables visual bell (disables audio bell).
 set wildmenu       " Enables bash style tab completion.
-set vb             " Enables visual bell
+set wildmode=longest,list,full
 set lazyredraw     " redraw only when we need to.
 
 " Tabs functionality
@@ -93,8 +93,6 @@ nnoremap <leader>c :nohlsearch<CR>
 
 
 "" Modifications
-" Converts current word to uppercase.
-inoremap <C-U> <Esc>viwUea
 
 " Sources ~/.vimrc.
 noremap <leader>s :source $MYVIMRC<CR>
