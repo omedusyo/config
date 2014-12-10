@@ -53,7 +53,6 @@ set showmatch      " Shows bracket matches.
 set encoding=utf-8
 " set vb             " Enables visual bell (disables audio bell).
 set wildmenu       " Enables bash style tab completion.
-set wildmode=longest,list,full
 set lazyredraw     " redraw only when we need to.
 
 " Tabs functionality
@@ -113,4 +112,9 @@ let g:syntastic_php_checkers = ['php']
 """ Abbriviations
 iabbrev @@    yuriy.dupyn@gmail.com
 iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
+
+""" Adding comment syntax for unfamiliar languages
+
+" Prolog
+autocmd FileType apache set commentstring=%\ %s
 
