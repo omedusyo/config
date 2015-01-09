@@ -7,3 +7,6 @@
 # Use rlwrap -a program_name to always readline a program
 set editing-mode vi
 
+# Binds Ctrl+l to 'clear screen'.
+C-l: clear-screen
+
