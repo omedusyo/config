@@ -20,20 +20,21 @@ Plugin 'nanotech/jellybeans.vim'          " Colorscheme.
 Plugin 'altercation/vim-colors-solarized' " Colorscheme.
 
 " Syntax and PL related stuff
-Plugin 'scrooloose/syntastic'             " Syntax checker.
+" Plugin 'scrooloose/syntastic'             " Syntax checker.
 Plugin 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax.
 Plugin 'mattn/emmet-vim.git'              " HTML and CSS speed coding.
 Plugin 'othree/html5-syntax.vim'          " HTML5 syntax.
-Plugin 'adimit/prolog.vim'                " Prolog syntax.
+" Plugin 'adimit/prolog.vim'                " Prolog syntax.
+Plugin 'Jinja'                            " Flask template engine syntax.
 
 Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
 Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
-Plugin 'sjl/gundo.vim'                    " Visualizes the undo tree.
+" Plugin 'sjl/gundo.vim'                    " Visualizes the undo tree.
 Plugin 'mikewest/vimroom'                 " Makes for better writing experience (<LEADER>V).
 
 Plugin 'tpope/vim-commentary'             " You can comment stuff out with this (gcc).
-Plugin 'tpope/vim-endwise'                " Automatic ending of structures (only for few languages).
-Plugin 'tpope/vim-surround'               " Easy surrounds and so on.
+" Plugin 'tpope/vim-endwise'                " Automatic ending of structures (only for few languages).
+" Plugin 'tpope/vim-surround'               " Easy surrounds and so on.
 Plugin 'Lokaltog/vim-easymotion'          " Adds additional simple motions.
 
 call vundle#end() 
@@ -71,6 +72,7 @@ set ignorecase " Ignores case while searching.
 set smartcase  " Ignore 'ignorecase' if search contains uppercase letters.
 set incsearch  " Highlights dynamically as you start to search.
 
+set ttimeoutlen=100 " Solves the problem with delayed O.
 
 """ Key Bindings
 let mapleader   = ","
@@ -107,7 +109,7 @@ nnoremap <leader>u :GundoToggle<CR>
 
 
 " Syntastic
-let g:syntastic_php_checkers = ['php']
+" let g:syntastic_php_checkers = ['php']
 
 """ Abbriviations
 iabbrev @@    yuriy.dupyn@gmail.com
@@ -117,4 +119,7 @@ iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
 
 " Prolog
 autocmd FileType apache set commentstring=%\ %s
+
+" Python tabs
+autocmd Filetype python set expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
