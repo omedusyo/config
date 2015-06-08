@@ -16,8 +16,12 @@ Plugin 'gmarik/Vundle.vim'
 " e.g. Plugin 'Buffergator'
 
 """ My Plugins
-Plugin 'nanotech/jellybeans.vim'          " Colorscheme.
-Plugin 'altercation/vim-colors-solarized' " Colorscheme.
+" Colorschemes
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'fxn/vim-monochrome'
+Plugin 'vyshane/vydark-vim-color'
 
 " Syntax and PL related stuff
 " Plugin 'scrooloose/syntastic'             " Syntax checker.
@@ -25,7 +29,13 @@ Plugin 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax.
 Plugin 'mattn/emmet-vim.git'              " HTML and CSS speed coding.
 Plugin 'othree/html5-syntax.vim'          " HTML5 syntax.
 " Plugin 'adimit/prolog.vim'                " Prolog syntax.
+Plugin 'andreimaxim/vim-io'               " Io syntax highlighter.
 Plugin 'Jinja'                            " Flask template engine syntax.
+Plugin 'idris-hackers/idris-vim'          " Idris syntax highlighting.
+Plugin 'derekelkins/agda-vim'             " Agda syntax highlighting.
+" Erlang plugins
+Plugin 'jimenezrick/vimerl'               " Indenting, autocomplete and more for Erlang.
+Plugin 'elixir-lang/vim-elixir'           " Elixir support for vim.
 
 Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
 Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
@@ -33,8 +43,8 @@ Plugin 'scrooloose/nerdtree'              " Enables tree like view of your files
 Plugin 'mikewest/vimroom'                 " Makes for better writing experience (<LEADER>V).
 
 Plugin 'tpope/vim-commentary'             " You can comment stuff out with this (gcc).
-" Plugin 'tpope/vim-endwise'                " Automatic ending of structures (only for few languages).
-" Plugin 'tpope/vim-surround'               " Easy surrounds and so on.
+" Plugin 'tpope/vim-endwise'                " Automatic ending of structures (only for a few languages).
+Plugin 'tpope/vim-surround'               " Easy surrounds and so on.
 Plugin 'Lokaltog/vim-easymotion'          " Adds additional simple motions.
 
 call vundle#end() 
@@ -47,8 +57,12 @@ filetype plugin indent on
 " let g:solarized_termcolors=256
 " colorscheme solarized
 colorscheme jellybeans
+" colorscheme vydark
+" colorscheme monochrome
+" colorscheme vividchalk
 
 set number         " Shows line numbers.
+set relativenumber
 set cursorline     " Highlights current line.
 set showmatch      " Shows bracket matches.
 set encoding=utf-8
@@ -75,7 +89,7 @@ set incsearch  " Highlights dynamically as you start to search.
 set ttimeoutlen=100 " Solves the problem with delayed O.
 
 """ Key Bindings
-let mapleader   = ","
+let mapleader   = "\<Space>"
 let localleader = "-"
 
 " Tabs
@@ -90,10 +104,25 @@ inoremap <C-t> <Esc>:tabedit<CR>
 
 
 "" Selections
-nnoremap <leader>c :nohlsearch<CR>
+nnoremap <leader>h :nohlsearch<CR>
+
+"" Save & Quit
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+"" Copy & Paste
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
 
 
 "" Modifications
+
+" Emmet
+let g:user_emmet_leader_key=','
 
 " Sources ~/.vimrc.
 noremap <leader>s :source $MYVIMRC<CR>
@@ -119,7 +148,13 @@ iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
 
 " Prolog
 autocmd FileType apache set commentstring=%\ %s
+autocmd FileType lhaskell set commentstring=>\ %s
 
 " Python tabs
 autocmd Filetype python set expandtab tabstop=2 softtabstop=2 shiftwidth=2
+
+" Changing comment color.
+highlight Comment ctermfg=lightblue
+
+nohlsearch
 
