@@ -36,6 +36,12 @@ Plugin 'derekelkins/agda-vim'             " Agda syntax highlighting.
 " Erlang plugins
 Plugin 'jimenezrick/vimerl'               " Indenting, autocomplete and more for Erlang.
 Plugin 'elixir-lang/vim-elixir'           " Elixir support for vim.
+" LaTeX
+Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Lightweight toolbox for LaTeX.
+
+
+" COOL plugins
+Plugin 'vim-scripts/cool.vim'
 
 Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
 Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
@@ -53,10 +59,17 @@ syntax enable      " Enables syntax highlighting.
 filetype plugin indent on
 
 " Colorscheme configurations
+
+" solarized light
 " set background=light
 " let g:solarized_termcolors=256
 " colorscheme solarized
-colorscheme jellybeans
+
+" solarized dark
+set background=dark
+colorscheme solarized
+
+" colorscheme jellybeans
 " colorscheme vydark
 " colorscheme monochrome
 " colorscheme vividchalk
@@ -90,7 +103,7 @@ set ttimeoutlen=100 " Solves the problem with delayed O.
 
 """ Key Bindings
 let mapleader   = "\<Space>"
-let localleader = "-"
+let localleader = ","
 
 " Tabs
 noremap <C-l> :tabnext<CR>
@@ -118,11 +131,7 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-
 "" Modifications
-
-" Emmet
-let g:user_emmet_leader_key=','
 
 " Sources ~/.vimrc.
 noremap <leader>s :source $MYVIMRC<CR>
@@ -130,31 +139,40 @@ noremap <leader>s :source $MYVIMRC<CR>
 " Open ~/.vimrc in a new tab
 nnoremap <leader>v :tabedit $MYVIMRC<CR>
 
+" ctag
+nnoremap <f5> :!ctags -R<CR>
+nnoremap <leader>] <C-]>
+nnoremap <leader>[ :pop<CR>
+
+" Emmet
+let g:user_emmet_leader_key=',,'
+
+
 " NERDD Tree
 noremap <C-n> :NERDTreeToggle<CR>
 
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-
 " Syntastic
 " let g:syntastic_php_checkers = ['php']
 
 """ Abbriviations
-iabbrev @@    yuriy.dupyn@gmail.com
-iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
+" iabbrev @@    yuriy.dupyn@gmail.com
+" iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
+
 
 """ Adding comment syntax for unfamiliar languages
-
-" Prolog
-autocmd FileType apache set commentstring=%\ %s
-autocmd FileType lhaskell set commentstring=>\ %s
+autocmd FileType apache set commentstring=%\ %s   " Prolog comments
+autocmd FileType lhaskell set commentstring=>\ %s " Haskell comments
+autocmd FileType sml set commentstring=(*\ %s*)   " ML comments
 
 " Python tabs
 autocmd Filetype python set expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
 " Changing comment color.
-highlight Comment ctermfg=lightblue
+" highlight Comment ctermfg=lightblue
+highlight Comment ctermfg=lightyellow 
 
 nohlsearch
 
