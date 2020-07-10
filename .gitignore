@@ -2,3 +2,16 @@
 *.swp
 *.swo
 
+# Ignore krita files
+*.kra
+*.kra~
+
+# npm
+node_modules/
+npm-debug.log
+# yarn
+yarn-error.log
+
+# temporary repl-session file
+tmp_repl.js
+

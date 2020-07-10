@@ -1,0 +1,28 @@
+  "scripts": {
+    "build": "webpack",
+    "open": "firefox dist/index.html",
+    "watch": "webpack --watch"
+  },
+
+devDependencies
+yarn add --dev webpack babel-cli babel-polyfill babel-preset-env babel-preset-react babel-loader
+yarn add --dev css-loader style-loader postcss postcss-loader precss
+
+dependencies:
+yarn add immutable
+yarn add react react-dom react-router-dom react-hyperscript hyperscript-helpers
+yarn add react-bootstrap react-fontawesome
+
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import h from 'react-hyperscript';
+import hyperscriptHelpers from 'hyperscript-helpers';
+const { div, span, button, p, h1 } = hyperscriptHelpers(h);
+
+
+
+
+npm install -g eslint
+copy .eslintrc.json or eslint --init
+eslint src/file.js
+

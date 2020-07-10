@@ -1,0 +1,3 @@
+Put kritashortcutsrc into
+  ~/.config/
+

@@ -1,0 +1,14 @@
+[Shortcuts]
+InteractionTool=A
+KisToolSelectOutline=S
+KritaShape/KisToolMultiBrush=none
+activateNextLayer=PgUp; Space
+activatePreviousLayer=PgDown; Shift+Space
+clear=Del; D
+decrease_brush_size=[; Q
+disable_pressure=N
+file_quit=none
+increase_brush_size=]; W
+reset_fg_bg=none
+switchToPreviouslyActiveNode=;;\s
+wrap_around_mode=none
