@@ -29,6 +29,7 @@ Plugin 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax.
 Plugin 'mattn/emmet-vim.git'              " HTML and CSS speed coding.
 Plugin 'othree/html5-syntax.vim'          " HTML5 syntax.
 " Plugin 'adimit/prolog.vim'                " Prolog syntax.
+" Plugin 'andreimaxim/vim-io'               " Io syntax highlighter.
 Plugin 'Jinja'                            " Flask template engine syntax.
 Plugin 'idris-hackers/idris-vim'          " Idris syntax highlighting.
 Plugin 'derekelkins/agda-vim'             " Agda syntax highlighting.
@@ -41,6 +42,9 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Lightweight toolbox for LaTeX.
 
 " COOL plugins
 Plugin 'vim-scripts/cool.vim'
+
+" Send stuff to REPL 
+Plugin 'jpalardy/vim-slime'
 
 Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
 Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
@@ -155,6 +159,12 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " Syntastic
 " let g:syntastic_php_checkers = ['php']
+
+" Vim Slime
+let g:slime_target = "tmux"
+" Makes the default tmux target plane: current.2
+let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+let g:slime_dont_ask_default = 1
 
 """ Abbriviations
 " iabbrev @@    yuriy.dupyn@gmail.com
