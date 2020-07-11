@@ -29,7 +29,6 @@ Plugin 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax.
 Plugin 'mattn/emmet-vim.git'              " HTML and CSS speed coding.
 Plugin 'othree/html5-syntax.vim'          " HTML5 syntax.
 " Plugin 'adimit/prolog.vim'                " Prolog syntax.
-Plugin 'andreimaxim/vim-io'               " Io syntax highlighter.
 Plugin 'Jinja'                            " Flask template engine syntax.
 Plugin 'idris-hackers/idris-vim'          " Idris syntax highlighting.
 Plugin 'derekelkins/agda-vim'             " Agda syntax highlighting.
