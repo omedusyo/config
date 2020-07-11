@@ -163,7 +163,8 @@ nnoremap <leader>u :GundoToggle<CR>
 " Vim Slime
 let g:slime_target = "tmux"
 " Makes the default tmux target plane: current.2
-let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+" let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
 
 """ Abbriviations
@@ -175,6 +176,7 @@ let g:slime_dont_ask_default = 1
 autocmd FileType apache set commentstring=%\ %s   " Prolog comments
 autocmd FileType lhaskell set commentstring=>\ %s " Haskell comments
 autocmd FileType sml set commentstring=(*\ %s*)   " ML comments
+autocmd FileType ocaml set commentstring=(*\ %s*)   " OCaml comments
 
 " Python tabs
 autocmd Filetype python set expandtab tabstop=2 softtabstop=2 shiftwidth=2
