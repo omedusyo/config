@@ -28,6 +28,12 @@ Check out https://github.com/tmux-plugins/tpm
 Don't forget to
 > `prefix + I`
 
+## Commands Refresher
+Reattach to last session
+> tmux attach
+Select mode
+> `prefix + I` [
+
 # Z shell
 
 ## oh my zsh
