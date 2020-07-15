@@ -31,8 +31,20 @@ bindkey -M vicmd '^s' history-incremental-search-backward
 alias l="ls"
 alias ll="ls -la"
 alias sudo="sudo "
-alias py="ptpython --vi"
 
 # Tmuxinator configurations
-export EDITOR=vim
+export EDITOR=nvim
 
+# The future is now old man
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="vim"
+
+unset SSH_ASKPASS
+
+# Increase key speed via a rate change
+xset r rate 300 50
+
+# opam configuration
+test -r /home/omedusyo/.opam/opam-init/init.zsh && . /home/omedusyo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
