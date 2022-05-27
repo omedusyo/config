@@ -1,65 +1,75 @@
-""" General configurations
-set nocompatible
-set t_Co=256
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+""" Don't forget to run :checkhealth
 
-" This is the Vundle package, which can be found on GitHub.
-" For GitHub repos, you specify plugins using the
-" 'user/repository' format.
-Plugin 'gmarik/Vundle.vim'
-
-" To get plugins from Vim Scripts, you can reference the plugin
-" by name as it appears on the site,
-" e.g. Plugin 'Buffergator'
-
+" PLUGINS
+" Check out https://github.com/junegunn/vim-plug for initialization
+call plug#begin(stdpath('data') . '/plugged')
 """ My Plugins
+
 " Colorschemes
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'fxn/vim-monochrome'
-Plugin 'vyshane/vydark-vim-color'
+Plug 'nanotech/jellybeans.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-vividchalk'
+Plug 'fxn/vim-monochrome'
+Plug 'vyshane/vydark-vim-color'
 
-" Syntax and PL related stuff
-" Plugin 'scrooloose/syntastic'             " Syntax checker.
-Plugin 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax.
-Plugin 'mattn/emmet-vim.git'              " HTML and CSS speed coding.
-Plugin 'othree/html5-syntax.vim'          " HTML5 syntax.
-" Plugin 'adimit/prolog.vim'                " Prolog syntax.
-" Plugin 'andreimaxim/vim-io'               " Io syntax highlighter.
-Plugin 'Jinja'                            " Flask template engine syntax.
-Plugin 'idris-hackers/idris-vim'          " Idris syntax highlighting.
-Plugin 'derekelkins/agda-vim'             " Agda syntax highlighting.
-" Erlang plugins
-Plugin 'jimenezrick/vimerl'               " Indenting, autocomplete and more for Erlang.
-Plugin 'elixir-lang/vim-elixir'           " Elixir support for vim.
-" LaTeX
-Plugin 'LaTeX-Box-Team/LaTeX-Box'         " Lightweight toolbox for LaTeX.
+" Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair. !!! Could cause problems
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense. Tries to make your Vim/Neovim as smart as VSCode.
+                                                " Seems to require nodejs
+" Shortcuts
+" gr : finds all the locations of an identifier
+" shift-k : gives help
 
-" COOL plugins
-Plugin 'vim-scripts/cool.vim'
+" Plug 'sheerun/vim-polyglot'             " A collection of language packs.
+
+Plug 'dense-analysis/ale'               " linting
+
+Plug 'elmcast/elm-vim'                  " Elm formatter
+
+Plug 'purescript-contrib/purescript-vim' " PureScript lagnuage support
+Plug 'frigoeu/psc-ide-vim'              " Interface to PureScript language server
+
+Plug 'vim-scripts/asmM6502.vim'         " Syntax for the 6502 processor (Atari 2600)
+
+Plug 'itchyny/lightline.vim'            " Statusline/tabline plugin .
+
+Plug 'mhinz/vim-startify'               " Start screen.
+
+Plug 'junegunn/goyo.vim'                " Distraction-free writing.
+
+Plug 'preservim/nerdtree'               " Enables tree like view of your filesystem.
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'    " Fuzzy-finder and more
+
+Plug 'vmchale/ats-vim'                  " ATS syntax
+
+Plug 'tpope/vim-commentary'             " Easy comments (gcc).
+
+Plug 'mattn/emmet-vim'                  " HTML and CSS speed coding.
+
+Plug 'LaTeX-Box-Team/LaTeX-Box'         " Lightweight toolbox for LaTeX.
+
+" Plug 'tpope/vim-fugitive'               " git integration
+
+Plug 'fidian/hexmode'                   " hex/binary viewer. Just write :Hexmode
 
 " Send stuff to REPL 
-Plugin 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime'
 
-Plugin 'kien/ctrlp.vim'                   " Fuzzy search for files.
-Plugin 'scrooloose/nerdtree'              " Enables tree like view of your filesystem.
-" Plugin 'sjl/gundo.vim'                    " Visualizes the undo tree.
-Plugin 'mikewest/vimroom'                 " Makes for better writing experience (<LEADER>V).
+" Markdown rendering server
+" Run :LivedownPreview (to kill it :LivedownKill)
+"  or :LivedownToggle
+Plug 'shime/vim-livedown'
 
-Plugin 'tpope/vim-commentary'             " You can comment stuff out with this (gcc).
-" Plugin 'tpope/vim-endwise'                " Automatic ending of structures (only for a few languages).
-Plugin 'tpope/vim-surround'               " Easy surrounds and so on.
-Plugin 'Lokaltog/vim-easymotion'          " Adds additional simple motions.
+" Initialize plugin system
+call plug#end()
 
-call vundle#end() 
+source $HOME/.config/nvim/my_coc.vim
 
-syntax enable      " Enables syntax highlighting.
-filetype plugin indent on
+" BASIC CONFIGURATION
 
 " Colorscheme configurations
 
@@ -77,14 +87,16 @@ colorscheme solarized
 " colorscheme monochrome
 " colorscheme vividchalk
 
-set number         " Shows line numbers.
-set relativenumber
-set cursorline     " Highlights current line.
-set showmatch      " Shows bracket matches.
+
 set encoding=utf-8
-" set vb             " Enables visual bell (disables audio bell).
-set wildmenu       " Enables bash style tab completion.
-set lazyredraw     " redraw only when we need to.
+
+" Line Numbers
+set number         " Shows line numbers.
+" set relativenumber
+set cursorline     " Highlights current line.
+
+" Mouse
+set mouse=a
 
 " Tabs functionality
 set expandtab     " Insers spaces instead of tabs.
@@ -94,30 +106,18 @@ set shiftwidth=2
 
 " Indentation functionality
 set nowrap
-set autoindent " Copies indentation from previous line.
+" set autoindent " Copies indentation from previous line. " TODO: FIND OUT IF THIS IS USELESS
 
 " Search
-set hlsearch   " Highlights searches.
 set ignorecase " Ignores case while searching.
 set smartcase  " Ignore 'ignorecase' if search contains uppercase letters.
 set incsearch  " Highlights dynamically as you start to search.
 
-set ttimeoutlen=100 " Solves the problem with delayed O.
+
 
 """ Key Bindings
 let mapleader   = "\<Space>"
 let localleader = ","
-
-" Tabs
-noremap <C-l> :tabnext<CR>
-inoremap <C-l> <Esc>:tabnext<CR>
-
-noremap <C-h> :tabprevious<CR>
-inoremap <C-h> <Esc>:tabprevious<CR>
-
-noremap <C-t> :tabedit<CR>
-inoremap <C-t> <Esc>:tabedit<CR>
-
 
 "" Selections
 nnoremap <leader>h :nohlsearch<CR>
@@ -125,6 +125,42 @@ nnoremap <leader>h :nohlsearch<CR>
 "" Save & Quit
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+
+" Sources init.vim (i.e. .vimrc).
+noremap <leader>s :source $MYVIMRC<CR>
+
+" Open ~/.vimrc in a new tab
+nnoremap <leader>v :tabedit $MYVIMRC<CR>
+
+" Tabs
+noremap <C-l> :tabnext<CR>
+inoremap <C-l> <Esc>:tabnext<CR>
+
+noremap <C-l> :tabnext<CR>
+
+noremap <C-h> :tabprevious<CR>
+inoremap <C-h> <Esc>:tabprevious<CR>
+
+noremap <C-t> :tabedit<CR>
+inoremap <C-t> <Esc>:tabedit<CR>
+
+" Resizing panes
+nnoremap <Up> :resize +2<CR>
+nnoremap <Down> :resize -2<CR>
+nnoremap <Left> :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+
+" Splitting panes
+"nmap <leader>\|   :leftabove  vsplit<CR>
+nmap <leader>\| :rightbelow vsplit<CR>
+"nmap <leader>_  :leftabove  split<CR>
+"nmap <leader>-  :leftabove  split<CR>
+nmap <leader>_  :rightbelow split<CR>
+nmap <leader>-  :rightbelow split<CR>
+
+" nmap <leader>t :rightbelow split<CR><C-w>T " Move current pane to new tab
+nmap <C-t> :rightbelow split<CR><C-w>T " Move current pane to new tab
+
 
 "" Copy & Paste
 vmap <leader>y "+y
@@ -134,56 +170,64 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-"" Modifications
 
-" Sources ~/.vimrc.
-noremap <leader>s :source $MYVIMRC<CR>
+" BetterIndentation
+vnoremap < <gv
+vnoremap > >gv
 
-" Open ~/.vimrc in a new tab
-nnoremap <leader>v :tabedit $MYVIMRC<CR>
-
-" ctag
-nnoremap <f5> :!ctags -R<CR>
-nnoremap <leader>] <C-]>
-nnoremap <leader>[ :pop<CR>
-
-" Emmet
-let g:user_emmet_leader_key=',,'
-
-
-" NERDD Tree
-noremap <C-n> :NERDTreeToggle<CR>
-
-" Gundo
-nnoremap <leader>u :GundoToggle<CR>
-
-" Syntastic
-" let g:syntastic_php_checkers = ['php']
-
-" Vim Slime
-let g:slime_target = "tmux"
-" Makes the default tmux target plane: current.2
-" let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
-let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
-let g:slime_dont_ask_default = 1
-
-""" Abbriviations
-" iabbrev @@    yuriy.dupyn@gmail.com
-" iabbrev ccopy Copyright 2014 Jura Dupyn, all rights reserved
-
-
+" Folding
+" You have three options: indent, syntax, manual (that's the default)
+set foldmethod=indent " enables folding by indentation
+" set foldmethod=syntax " enables folding by syntax
+set nofoldenable
+ 
 """ Adding comment syntax for unfamiliar languages
 autocmd FileType apache set commentstring=%\ %s   " Prolog comments
 autocmd FileType lhaskell set commentstring=>\ %s " Haskell comments
 autocmd FileType sml set commentstring=(*\ %s*)   " ML comments
-autocmd FileType ocaml set commentstring=(*\ %s*)   " OCaml comments
+autocmd FileType ocaml set commentstring=(*\ %s*) " OCaml comments
 
-" Python tabs
-autocmd Filetype python set expandtab tabstop=2 softtabstop=2 shiftwidth=2
+" NERDD Tree
+" noremap <C-n> :NERDTreeToggle<CR>
 
-" Changing comment color.
-" highlight Comment ctermfg=lightblue
-highlight Comment ctermfg=lightyellow 
+" Light Line
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+set noshowmode
+
+" Telescope
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Fugitive
+nmap <leader>gs :G<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+
+" Goyo
+nmap <leader>V :Goyo<CR>
+
+" Startify
+nmap <leader>m :Startify<CR>
+
+" Emmet
+let g:user_emmet_leader_key=',,'
+
+" Vim Slime
+let g:slime_target = "tmux"
+" Makes the default tmux target plane: current.2
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
+let g:slime_dont_ask_default = 1
+
+" Elm config
+" let g:polyglot_disabled = ['elm']
+let g:elm_format_autosave = 1
+
+" Hex patterns
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.wasm'
 
 nohlsearch
 

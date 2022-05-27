@@ -44,7 +44,3 @@ unset SSH_ASKPASS
 
 # Increase key speed via a rate change
 xset r rate 300 50
-
-# opam configuration
-test -r /home/omedusyo/.opam/opam-init/init.zsh && . /home/omedusyo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"

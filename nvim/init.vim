@@ -13,7 +13,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'fxn/vim-monochrome'
 Plug 'vyshane/vydark-vim-color'
 
-Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair. !!! Could cause problems
+" Plug 'jiangmiao/auto-pairs'             " Insert or delete brackets, parens, quotes in pair. !!! Could cause problems
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense. Tries to make your Vim/Neovim as smart as VSCode.
                                                 " Seems to require nodejs
@@ -21,7 +21,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense. Tries to make yo
 " gr : finds all the locations of an identifier
 " shift-k : gives help
 
-Plug 'sheerun/vim-polyglot'             " A collection of language packs.
+" Plug 'sheerun/vim-polyglot'             " A collection of language packs.
+
+Plug 'dense-analysis/ale'               " linting
+
+Plug 'elmcast/elm-vim'                  " Elm formatter
+
+Plug 'purescript-contrib/purescript-vim' " PureScript lagnuage support
+Plug 'frigoeu/psc-ide-vim'              " Interface to PureScript language server
+
+Plug 'vim-scripts/asmM6502.vim'         " Syntax for the 6502 processor (Atari 2600)
 
 Plug 'itchyny/lightline.vim'            " Statusline/tabline plugin .
 
@@ -31,10 +40,29 @@ Plug 'junegunn/goyo.vim'                " Distraction-free writing.
 
 Plug 'preservim/nerdtree'               " Enables tree like view of your filesystem.
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'    " Fuzzy-finder and more
+
+Plug 'vmchale/ats-vim'                  " ATS syntax
+
+Plug 'tpope/vim-commentary'             " Easy comments (gcc).
+
+Plug 'mattn/emmet-vim'                  " HTML and CSS speed coding.
+
 Plug 'LaTeX-Box-Team/LaTeX-Box'         " Lightweight toolbox for LaTeX.
+
+" Plug 'tpope/vim-fugitive'               " git integration
+
+Plug 'fidian/hexmode'                   " hex/binary viewer. Just write :Hexmode
 
 " Send stuff to REPL 
 Plug 'jpalardy/vim-slime'
+
+" Markdown rendering server
+" Run :LivedownPreview (to kill it :LivedownKill)
+"  or :LivedownToggle
+Plug 'shime/vim-livedown'
 
 " Initialize plugin system
 call plug#end()
@@ -130,6 +158,10 @@ nmap <leader>\| :rightbelow vsplit<CR>
 nmap <leader>_  :rightbelow split<CR>
 nmap <leader>-  :rightbelow split<CR>
 
+" nmap <leader>t :rightbelow split<CR><C-w>T " Move current pane to new tab
+nmap <C-t> :rightbelow split<CR><C-w>T " Move current pane to new tab
+
+
 "" Copy & Paste
 vmap <leader>y "+y
 vmap <leader>d "+d
@@ -138,10 +170,16 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
+
 " BetterIndentation
 vnoremap < <gv
 vnoremap > >gv
 
+" Folding
+" You have three options: indent, syntax, manual (that's the default)
+set foldmethod=indent " enables folding by indentation
+" set foldmethod=syntax " enables folding by syntax
+set nofoldenable
  
 """ Adding comment syntax for unfamiliar languages
 autocmd FileType apache set commentstring=%\ %s   " Prolog comments
@@ -158,12 +196,25 @@ let g:lightline = {
       \ }
 set noshowmode
 
+" Telescope
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Fugitive
+nmap <leader>gs :G<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+
 " Goyo
 nmap <leader>V :Goyo<CR>
 
 " Startify
 nmap <leader>m :Startify<CR>
 
+" Emmet
+let g:user_emmet_leader_key=',,'
 
 " Vim Slime
 let g:slime_target = "tmux"
@@ -171,6 +222,12 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
 
+" Elm config
+" let g:polyglot_disabled = ['elm']
+let g:elm_format_autosave = 1
+
+" Hex patterns
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o,*.wasm'
 
 nohlsearch
 
