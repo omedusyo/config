@@ -1,0 +1,9 @@
+# Ignore temporary vim files.
+*.swp
+*.swo
+
+# temporary repl-session file
+tmp_repl.txt
+
+plugin/
+

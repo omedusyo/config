@@ -1,0 +1,6 @@
+[flavor]
+# dark  = "
+# dark = "flexoki-dark"
+# dark = "vscode-dark-modern"
+dark = "vscode-dark-plus"
+light = ""

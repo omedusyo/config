@@ -36,9 +36,9 @@ alias sudo="sudo "
 export EDITOR=nvim
 
 # The future is now old man
-alias vim="nvim"
-alias vi="nvim"
-alias oldvim="vim"
+alias vim="/run/current-system/sw/bin/nvim"
+alias vi="/run/current-system/sw/bin/nvim"
+alias oldvim="/run/current-system/sw/bin/vim"
 
 unset SSH_ASKPASS
 
