@@ -90,17 +90,17 @@ keymap("n", "<leader>m", ":Telescope marks<CR>")
 
 
 -- ===AI===
-keymap("n", "<leader>a", ":CodeCompanionChat Toggle<CR>")
-keymap("v", "<leader>a", ":CodeCompanionChat Toggle<CR>")
-keymap("n", "<leader>c", ":CodeCompanionActions<CR>")
-keymap("v", "<leader>c", ":CodeCompanionActions<CR>")
+-- keymap("n", "<leader>a", ":CodeCompanionChat Toggle<CR>")
+-- keymap("v", "<leader>a", ":CodeCompanionChat Toggle<CR>")
+-- keymap("n", "<leader>c", ":CodeCompanionActions<CR>")
+-- keymap("v", "<leader>c", ":CodeCompanionActions<CR>")
 
--- Abbreviation for when you type `:cc` followed by a space,
--- Neovim will expand it to ':CodeCompanion '.
-vim.cmd([[cab cc CodeCompanion]])
+-- -- Abbreviation for when you type `:cc` followed by a space,
+-- -- Neovim will expand it to ':CodeCompanion '.
+-- vim.cmd([[cab cc CodeCompanion]])
 
-keymap("n", "<leader>x", ":CodeCompanion<CR>")
-keymap("v", "<leader>x", ":CodeCompanion<CR>")
+-- keymap("n", "<leader>x", ":CodeCompanion<CR>")
+-- keymap("v", "<leader>x", ":CodeCompanion<CR>")
 
 
 

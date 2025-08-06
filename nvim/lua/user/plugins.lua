@@ -131,7 +131,8 @@ local plugins = {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
+        -- TOdefault = { 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -275,33 +276,33 @@ local plugins = {
   'otherjoel/vim-pollen',
 
   -- ===Ai===
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- Required for Job and HTTP requests
-    },
-    build = "npm install -g mcp-hub@latest",
-  },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",  -- Required for Job and HTTP requests
+  --   },
+  --   build = "npm install -g mcp-hub@latest",
+  -- },
 
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            show_result_in_chat = true,  -- Show mcp tool results in chat
-            make_vars = true,            -- Convert resources to #variables
-            make_slash_commands = true,  -- Add prompts as /slash commands
-          }
-        }
-      }
-    },
-  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   opts = {
+  --     extensions = {
+  --       mcphub = {
+  --         callback = "mcphub.extensions.codecompanion",
+  --         opts = {
+  --           show_result_in_chat = true,  -- Show mcp tool results in chat
+  --           make_vars = true,            -- Convert resources to #variables
+  --           make_slash_commands = true,  -- Add prompts as /slash commands
+  --         }
+  --       }
+  --     }
+  --   },
+  -- },
 
   -- {
   --   "yetone/avante.nvim",

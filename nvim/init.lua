@@ -10,6 +10,6 @@ require "user.completion"
 require "user.file-explorer"
 require "user.treesitter"
 require "user.lsp"
-require "user.ai"
+-- require "user.ai"
 
 -- myElmStuff = require "user.my-elm-stuff"
