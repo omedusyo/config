@@ -1,0 +1,17 @@
+set selection-clipboard clipboard
+
+# Stop on page boundaries when doing half/full-page jumps
+set scroll-page-aware true
+# How far a single 'scroll' moves (j/k or wheel tick)
+set scroll-step 60
+# After a full-page jump, keep a tiny overlap (context)
+set scroll-full-overlap 0.08
+
+
+# Incremental search while typing; center results horizontally
+set incremental-search true
+set search-hadjust true
+
+
+# Save position continuously (not just on quit)
+set continuous-hist-save true
