@@ -41,6 +41,9 @@ alias l="ls"
 alias ll="ls -la"
 alias sudo="sudo "
 
+# e.g. `open test.html` opens the html file in the default browser
+alias open="xdg-open"
+
 # Tmuxinator configurations
 export EDITOR=nvim
 
