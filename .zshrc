@@ -56,3 +56,6 @@ unset SSH_ASKPASS
 
 # Increase key speed via a rate change
 xset r rate 300 50
+
+# ===PATHS===
+export PATH="$HOME/.local/bin:$PATH"
