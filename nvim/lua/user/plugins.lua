@@ -226,6 +226,19 @@ local plugins = {
   --  TODO: Don't forget ot `npm install -g livedown`
   "shime/vim-livedown",
 
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",  -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = { "nvim-lua/plenary.nvim", },
+    opts = {
+      workspaces = {
+        { name = "personal-phone", path = "~/vault/Phone/ObsidianVault", },
+      },
+    },
+  },
+
   -- Viewing binaries
   "fidian/hexmode", -- hex/binary viewer. Just write :Hexmode
 
