@@ -1,0 +1,17 @@
+[user]
+	name = Yura Dupyn
+	email = 2153100+omedusyo@users.noreply.github.com
+[init]
+    defaultBranch = master
+[color]
+    ui = auto
+[diff]
+    algorithm = histogram
+    renames = true
+    colorMoved = zebra
+
+[status]
+    submoduleSummary = true
+[advice]
+    # Fewer nags, keep the useful ones
+    statusHints = true
