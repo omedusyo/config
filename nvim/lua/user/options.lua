@@ -56,10 +56,16 @@ local myOptions = {
 
   -- Folding
   -- You have three options: indent, syntax, manual (that's the default)
-  foldmethod = "expr",              -- enabled folding with treesitter
+  foldmethod = "expr",                -- enabled folding with treesitter
+  foldexpr = "nvim_treesitter#foldexpr()",
   -- foldmethod = "indent",              -- enables folding by indentation
   -- foldmethod = "syntax",              -- enables folding by syntax
-  foldenable = false,
+  foldlevel = 99,                     -- keep most folds open while working
+  foldlevelstart = 99,                 -- open on file open
+  foldcolumn = "1",            -- gutter to show folds (nice UX)
+  foldenable = true,
+
+  viewoptions = "folds,cursor",
 }
 mergeTables(vim.opt, myOptions)
 
@@ -98,12 +104,4 @@ vim.filetype.add({
   pattern = {
     ['.*%.v'] = 'verilog',
   },
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    -- vim.opt_local.conceallevel = 1
-    vim.opt_local.conceallevel = 2
-  end,
 })

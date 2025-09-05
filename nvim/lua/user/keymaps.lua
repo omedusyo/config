@@ -175,8 +175,6 @@ keymap("i", "<C-g>", "⊸")
 
 keymap("i", "<C-q>", "(Debug.todo \"\")")
 
-
-
 return {
   toggle_diffview = toggle_diffview,
 }

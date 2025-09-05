@@ -235,7 +235,9 @@ local plugins = {
     opts = {
       workspaces = {
         { name = "personal-phone", path = "~/vault/Phone/ObsidianVault", },
+        { name = "startup-agents", path = "~/logos/Startup/agents/AI", },
       },
+      ui = { enable = false },
     },
   },
 
