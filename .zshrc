@@ -59,3 +59,4 @@ xset r rate 300 50
 
 # ===PATHS===
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
