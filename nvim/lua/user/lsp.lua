@@ -1,8 +1,6 @@
-
-local lspconfig = require("lspconfig")
-local util = require("lspconfig.util")
 local metals = require("metals")
 -- vim.lsp.set_log_level('debug')
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 ---- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local function on_attach(client, bufnr)
@@ -62,39 +60,49 @@ local function on_attach(client, bufnr)
 end
 
 -- Elm
-lspconfig.elmls.setup {
-  on_attach = on_attach,
-}
+vim.lsp.config('elmls', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('elmls')
 
 -- Rust
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-}
+vim.lsp.config('rust_analyzer', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('rust_analyzer')
 
 -- Typescript
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-}
+vim.lsp.config('ts_ls', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('ts_ls')
 
 -- C++
-lspconfig.clangd.setup{
-  on_attach = on_attach,
-}
+vim.lsp.config('clangd', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('clangd')
 
 ---- ReScript
-lspconfig.rescriptls.setup {
+vim.lsp.config('rescriptls', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('rescriptls')
+
+-- Purescript
+vim.lsp.config('purescriptls', {
   on_attach = on_attach,
-}
+  capabilities = capabilities ,
+  settings = {
+    purescript = {
+      addSpagoSources = true
+    }
+  },
+})
+vim.lsp.enable('purescriptls')
 
----- Scala
--- Don't enable the below. Look at the `nvim-metals` plugin.
--- lspconfig.metals.setup {
---   on_attach = on_attach,
---   -- TODO: How to actually configure this?
---   showInferredType = true,
---   showImplicitArguments = true,
--- }
+vim.lsp.config('gleam', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('gleam')
 
+-- F#
+vim.lsp.config('fsautocomplete', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('fsautocomplete')
+
+-- Racket
+vim.lsp.config('racket_langserver', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('racket_langserver')
+
+---- Scala Metals, has its own plugin
 local metals_config = metals.bare_config()
 metals_config.on_attach = on_attach
 metals_config.settings = {
@@ -120,32 +128,3 @@ vim.notify = function(msg, level, opts)
   end
   old(msg, level, opts)
 end
-
----- Lua
---lspconfig.sumneko_lua.setup {
---  on_attach = on_attach,
---}
-
-lspconfig.purescriptls.setup {
-  on_attach = on_attach,
-  settings = {
-      purescript = {
-        addSpagoSources = true
-      }
-    },
-}
-
--- Gleam
-lspconfig.gleam.setup {
-  on_attach = on_attach,
-}
-
--- F#
-lspconfig.fsautocomplete.setup {
-  on_attach = on_attach,
-}
-
--- Racket
--- lspconfig.racket_langserver.setup {
---   on_attach = on_attach,
--- }
