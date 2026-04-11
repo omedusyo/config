@@ -1,6 +1,7 @@
 
 local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
+local metals = require("metals")
 -- vim.lsp.set_log_level('debug')
 
 ---- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -45,8 +46,8 @@ local function on_attach(client, bufnr)
   -- DIAGNOSTICS
   keymap("n", "]d", diag.goto_next)
   keymap("n", "[d", diag.goto_prev)
-  keymap("n", "gl", diag.open_float)
-  keymap("n", "<LocalLeader>q", diag.setloclist)
+  keymap("n", "ge", diag.open_float)
+  keymap("n", "<LocalLeader>e", diag.setloclist)
 
   keymap("n", "<C-k>", buf.signature_help)
   keymap("n", "<LocalLeader>wa", buf.add_workspace_folder)
@@ -86,12 +87,39 @@ lspconfig.rescriptls.setup {
 }
 
 ---- Scala
---lspconfig.metals.setup {
---  on_attach = on_attach,
---  -- TODO: How to actually configure this?
---  showInferredType = true,
---  showImplicitArguments = true,
---}
+-- Don't enable the below. Look at the `nvim-metals` plugin.
+-- lspconfig.metals.setup {
+--   on_attach = on_attach,
+--   -- TODO: How to actually configure this?
+--   showInferredType = true,
+--   showImplicitArguments = true,
+-- }
+
+local metals_config = metals.bare_config()
+metals_config.on_attach = on_attach
+metals_config.settings = {
+  showImplicitArguments = true,
+  showInferredType = true,
+}
+-- Autocmd to start or attach Metals when you open Scala/SBT/Java
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "scala", "sbt", "java" },
+  callback = function()
+    metals.initialize_or_attach(metals_config)
+  end,
+  group = nvim_metals_group,
+})
+
+-- To shut up stupid metals popups saying project was recompiled.
+local old = vim.notify
+vim.notify = function(msg, level, opts)
+  if type(msg) == "string" and msg:match("LSP%[metals%]%[Info%] Compiled") then
+    return
+  end
+  old(msg, level, opts)
+end
 
 ---- Lua
 --lspconfig.sumneko_lua.setup {
@@ -112,6 +140,10 @@ lspconfig.gleam.setup {
   on_attach = on_attach,
 }
 
+-- F#
+lspconfig.fsautocomplete.setup {
+  on_attach = on_attach,
+}
 
 -- Racket
 -- lspconfig.racket_langserver.setup {

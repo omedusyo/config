@@ -177,13 +177,12 @@ local plugins = {
    --  end
   },
 
-  -- TODO: Maybe remove?
   -- this is for scala (compatible with `nvim-lspconfig`)
-  -- {
-  --   -- see https://github.com/scalameta/nvim-metals
-  --   "scalameta/nvim-metals",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  -- },
+  {
+    -- see https://github.com/scalameta/nvim-metals
+    "scalameta/nvim-metals",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
   -- File explorer
   "nvim-tree/nvim-tree.lua",
