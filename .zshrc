@@ -52,11 +52,19 @@ alias vim="/run/current-system/sw/bin/nvim"
 alias vi="/run/current-system/sw/bin/nvim"
 alias oldvim="/run/current-system/sw/bin/vim"
 
-unset SSH_ASKPASS
-
 # Increase key speed via a rate change
 xset r rate 300 50
 
 # ===PATHS===
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
+export LD_LIBRARY_PATH=/run/current-system/sw/lib:$LD_LIBRARY_PATH
+export PATH="$HOME/kosmos/Applications/:$PATH"
+export PATH="$HOME/.moon/bin:$PATH"
+
+export DOTNET_ROOT=/run/current-system/sw/share/dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# moonbit
+export PATH="$HOME/.moon/bin:$PATH"
