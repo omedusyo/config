@@ -58,6 +58,7 @@ local function on_attach(client, bufnr)
     print(vim.inspect(buf.list_workspace_folders()))
   end)
 end
+_G.on_attach = on_attach
 
 -- Elm
 vim.lsp.config('elmls', { on_attach = on_attach, capabilities = capabilities, })

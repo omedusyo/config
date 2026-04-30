@@ -23,7 +23,7 @@ local plugins = {
   "nvim-lua/popup.nvim",    -- An implementation of the Popup API from vim in Neovim.
   "nvim-lua/plenary.nvim",  -- Useful lua functions used by lots of plugins.
   "stevearc/dressing.nvim", -- Improves default vim.ui interfaces.
-  "MunifTanjim/nui.nvim", -- UI component library for vim.
+  "MunifTanjim/nui.nvim",   -- UI component library for vim.
   -- Improved viewing of .md
   --{
   --  'MeanderingProgrammer/render-markdown.nvim',
@@ -57,9 +57,9 @@ local plugins = {
     version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
+      require("nvim-surround").setup({
+          -- Configuration here, or leave empty to use defaults
+      })
     end
   },
 
@@ -214,6 +214,35 @@ local plugins = {
         { name = "startup-agents", path = "~/logos/Startup/agents/AI", },
       },
       ui = { enable = false },
+    },
+  },
+
+  {
+    'moonbit-community/moonbit.nvim',
+    ft = { 'moonbit' },
+    opts = {
+      -- mooncakes = {
+      --   virtual_text = true,   -- virtual text showing suggestions
+      --   use_local = true,      -- recommended, use index under ~/.moon
+      -- },
+      treesitter =  {
+        enabled = true, -- handled in the `treesitter.lua`
+        -- Set false to disable automatic installation and updating of parsers.
+        auto_install = false,
+      },
+      lsp = {
+        on_attach = function(client, bufnr)
+          _G.on_attach(client, bufnr)
+        end,
+        -- provide client capabilities to pass to the language server
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+      },
+      -- configure jsonls schema integration (enabled by default)
+      -- set `jsonls = false` to disable
+      jsonls = {
+        -- optional extra jsonls settings to merge
+        settings = {},
+      },
     },
   },
 
