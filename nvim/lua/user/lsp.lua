@@ -103,6 +103,10 @@ vim.lsp.enable('fsautocomplete')
 vim.lsp.config('racket_langserver', { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable('racket_langserver')
 
+-- Zig
+vim.lsp.config('zls', { on_attach = on_attach, capabilities = capabilities, })
+vim.lsp.enable('zls')
+
 ---- Scala Metals, has its own plugin
 local metals_config = metals.bare_config()
 metals_config.on_attach = on_attach
