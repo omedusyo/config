@@ -129,6 +129,35 @@ vim.keymap.set('n', '<leader>d', function()
   end
 end)
 
+-- Open Telescope window with git branches. Once a branch is selected, open a `diffview` relative to this branch as a `<base>...HEAD`
+vim.keymap.set('n', '<leader>D', function()
+  local builtin = require('telescope.builtin')
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+
+  builtin.git_branches({
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        local entry = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        -- print(entry.value)
+        vim.cmd('DiffviewOpen ' .. entry.value .. '...HEAD --imply-local')
+      end)
+
+      return true
+    end,
+  })
+end)
+
+vim.keymap.set('n', '<leader>f', function()
+  if next(require('diffview.lib').views) == nil then
+    vim.cmd('DiffviewFileHistory %')
+  else
+    vim.cmd('DiffviewClose')
+  end
+end)
+
 -- ===Tagbar===
 -- keymap("n", "<tab>", ":TagbarToggle<CR>")
 
