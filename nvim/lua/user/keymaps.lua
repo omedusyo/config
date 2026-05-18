@@ -130,16 +130,55 @@ vim.keymap.set('n', '<leader>d', function()
 end)
 
 -- Open Telescope window with git branches. Once a branch is selected, open a `diffview` relative to this branch as a `<base>...HEAD`
+local last_diffview_base = nil
 vim.keymap.set('n', '<leader>D', function()
   local builtin = require('telescope.builtin')
   local actions = require('telescope.actions')
   local action_state = require('telescope.actions.state')
+  local action_utils = require('telescope.actions.utils')
+
+  local prompt_bufnr_for_picker = nil
+  local did_initial_selection = false
 
   builtin.git_branches({
+    on_complete = {
+      function()
+        if did_initial_selection then
+          return
+        end
+
+        if last_diffview_base == nil then
+          return
+        end
+
+        if prompt_bufnr_for_picker == nil then
+          return
+        end
+
+        did_initial_selection = true
+
+        local picker = action_state.get_current_picker(prompt_bufnr_for_picker)
+
+        action_utils.map_entries(prompt_bufnr_for_picker, function(entry, _, row)
+          if entry.value == last_diffview_base then
+            picker:set_selection(row)
+          end
+        end)
+      end,
+    },
+
     attach_mappings = function(prompt_bufnr, map)
+      prompt_bufnr_for_picker = prompt_bufnr
+
       actions.select_default:replace(function()
         local entry = action_state.get_selected_entry()
         actions.close(prompt_bufnr)
+
+        if entry == nil then
+          return
+        end
+
+        last_diffview_base = entry.value
 
         -- print(entry.value)
         vim.cmd('DiffviewOpen ' .. entry.value .. '...HEAD --imply-local')
