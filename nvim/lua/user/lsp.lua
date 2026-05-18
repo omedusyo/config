@@ -95,6 +95,14 @@ vim.lsp.enable('purescriptls')
 vim.lsp.config('gleam', { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable('gleam')
 
+
+-- OCaml
+vim.lsp.config('ocamllsp', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+vim.lsp.enable('ocamllsp')
+
 -- F#
 vim.lsp.config('fsautocomplete', { on_attach = on_attach, capabilities = capabilities, })
 vim.lsp.enable('fsautocomplete')
