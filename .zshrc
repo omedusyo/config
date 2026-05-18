@@ -52,6 +52,8 @@ alias vim="/run/current-system/sw/bin/nvim"
 alias vi="/run/current-system/sw/bin/nvim"
 alias oldvim="/run/current-system/sw/bin/vim"
 
+alias ns='nix-shell --run zsh'
+
 # Increase key speed via a rate change
 xset r rate 300 50
 
