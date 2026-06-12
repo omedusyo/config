@@ -55,7 +55,9 @@ alias oldvim="/run/current-system/sw/bin/vim"
 alias ns='nix-shell --run zsh'
 
 # Increase key speed via a rate change
-xset r rate 300 50
+if [ -z "$WSL_DISTRO_NAME" ]; then
+  xset r rate 300 50
+fi
 
 # ===PATHS===
 export PATH="$HOME/.local/bin:$PATH"

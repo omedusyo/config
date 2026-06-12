@@ -43,6 +43,7 @@ local plugins = {
   -- "tpope/vim-vividchalk",
   -- "fxn/vim-monochrome",
   -- "vyshane/vydark-vim-color",
+  { 'projekt0n/github-nvim-theme', name = 'github-theme' },
 
   -- fonts
   "ryanoasis/vim-devicons",
