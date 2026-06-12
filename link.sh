@@ -1,3 +1,6 @@
+mkdir -p ~/.config
+mkdir -p ~/.cursor
+
 ln -fs ~/kosmos/dotfiles/.zshrc ~/.zshrc
 
 ln -fs ~/kosmos/dotfiles/.tmux.conf ~/.tmux.conf
